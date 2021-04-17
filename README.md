@@ -8,9 +8,31 @@
 
 ### 二、设置账号密码
 
-添加名为  **PMODE**、**PKEY**、**USER**、**PWD**、**STEP** 的变量，值分别为 **PMODE推送模式（ 'wx' server酱推送 'nwx' 新server酱推送 'tg' tg推送 ）**、 **推送key（0关闭）**、 **账号（仅支持手机号）**、**密码**、**步数（0则为1w-2w之间随机 或自定义随机范围[18000-25000]）**
+添加名为  **PMODE**、**PKEY**、**USER**、**PWD**、**STEP** 的变量，值分别为 **PMODE推送模式**、 **推送key（0关闭）**、 **账号（仅支持手机号）**、**密码**、**步数（0则为1w-2w之间随机 或自定义随机范围[18000-25000]）**
 
 > Settings-->Secrets-->New secret
+
+#### 参数解释
+
+**PMODE** 推送模式（ 'wx' server酱推送 'nwx' 新server酱推送 'tg' tg推送 'qwx' 企业微信推送 'off' 关闭推送）
+
+**PKEY** 推送密钥
+
+##### TG推送
+
+**PKEY** 填写 **token-userid**
+
+##### Server酱推送
+
+**PKEY** 填写server酱的推送key
+
+##### 企业微信推送
+
+**PKEY** 填写 **推送用户（可@all）-corpid-corpsecret**
+
+##### 关闭推送
+
+**PKEY** 留空即可
 
 ### 三、多账户(用不上请忽略)
 
@@ -31,12 +53,6 @@
 修改其中的10为你要的时间
 
 需要运行的时间-8就是UTC时间
-
-### 五、消息推送
-
-如果使用server酱推送 **PKEY** 填写server酱的推送key
-
-如果使用tg推送 **PKEY** 填写 **token-userid**
 
 ## 注意事项
 

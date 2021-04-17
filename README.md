@@ -20,7 +20,9 @@
 
 ##### TG推送
 
-**PKEY** 填写 ”**token-userid**“
+**PKEY** 填写
+
+> token-userid
 
 ##### Server酱推送
 
@@ -28,7 +30,9 @@
 
 ##### 企业微信推送
 
-**PKEY** 填写 “**推送用户（可@all）-corpid-corpsecret**”
+**PKEY** 填写
+
+> 推送用户（可@all）-corpid-corpsecret
 
 ##### 关闭推送
 

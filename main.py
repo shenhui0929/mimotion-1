@@ -246,7 +246,7 @@ if __name__ ==  "__main__":
             sckey = ''
     elif Pm == 'tg':
         token = input()
-        sl = token.split('-')
+        sl = token.split('@')
         if len(sl) != 2:
             print('tg推送参数有误！')
     elif Pm == 'qwx':

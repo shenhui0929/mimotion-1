@@ -16,27 +16,13 @@
 
 **PMODE** 推送模式（ 'wx' server酱推送 'nwx' 新server酱推送 'tg' tg推送 'qwx' 企业微信推送 'off' 关闭推送）
 
-**PKEY** 推送密钥
-
-##### TG推送
-
-**PKEY** 填写
-
-> token-userid
-
-##### Server酱推送
-
-**PKEY** 填写server酱的推送key
-
-##### 企业微信推送
-
-**PKEY** 填写
-
-> 推送用户（可@all）-corpid-corpsecret
-
-##### 关闭推送
-
-**PKEY** 留空即可
+**PKEY** 推送密钥：
+| 名称 |  格式  |
+| -------- | ----- |
+| TG推送 |   `token@userid`|
+| Server酱推送 |   `填写server酱的推送key`|
+| 企业微信推送 |   `推送用户（可@all）-corpid-corpsecret`|
+| 关闭推送 |   `留空即可`|
 
 ### 三、多账户(用不上请忽略)
 

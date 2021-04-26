@@ -7,10 +7,15 @@
 ### 一、Fork 此仓库
 
 ### 二、设置账号密码
+> 添加名为  **PMODE**、**PKEY**、**USER**、**PWD**、**STEP** 的变量: Settings-->Secrets-->New secret  
 
-添加名为  **PMODE**、**PKEY**、**USER**、**PWD**、**STEP** 的变量，值分别为 **PMODE推送模式**、 **推送key（0关闭）**、 **账号（仅支持手机号）**、**密码**、**步数（0则为1w-2w之间随机 或自定义随机范围[18000-25000]）**
-
-> Settings-->Secrets-->New secret
+| Secrets |  格式  |
+| -------- | ----- |
+| PMODE |   推送模式,server酱推送:'wx' 新server酱推送:'nwx' tg推送:'tg' 企业微信推送:'qwx' 关闭推送:'off'|
+| PKEY |   推送key,详见参数解释|
+| USER |   账号,仅支持手机号|
+| PWD |   密码|
+| STEP |   步数:0则为1w-2w之间随机,自定义随机范围: `18000-25000`|
 
 #### 参数解释
 

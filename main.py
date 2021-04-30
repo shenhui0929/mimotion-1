@@ -28,8 +28,8 @@ def login(user,password):
         "token":"access"
         }
     r1 = requests.post(url1,data=data1,headers=headers,allow_redirects=False)
-    location = r1.headers["Location"]
     try:
+        location = r1.headers["Location"]
         code = get_code(location)
     except:
         return 0,0
@@ -63,8 +63,8 @@ def main(user, passwd, step):
     password = str(passwd)
     step = str(step)
     if user == '' or password == '':
-        print ("用户名或密码填写有误！")
-        return "用户名或密码填写有误！"
+        print ("用户名或密码不能为空！")
+        return "user and passwd not empty！"
     
     if step == '':
         print ("已设置为随机步数（10000-19999）")
@@ -162,6 +162,29 @@ def push_server(sckey, desp=""):
         else:
             print(f"[{now}] 推送失败：{json_data['code']}({json_data['message']})")
 
+# 推送pushplus
+def push_pushplus(token, content=""):
+    """
+    推送消息到pushplus
+    """
+    if token == '':
+        print("[注意] 未提供token，不进行pushplus推送！")
+    else:
+        server_url = f"http://www.pushplus.plus/send"
+        params = {
+            "token": token,
+            "title": '小米运动 步数修改',
+            "content": content
+        }
+ 
+        response = requests.get(server_url, params=params)
+        json_data = response.json()
+ 
+        if json_data['code'] == 200:
+            print(f"[{now}] 推送成功。")
+        else:
+            print(f"[{now}] 推送失败：{json_data['code']}({json_data['message']})")
+
 # 推送tg
 def push_tg(token, chat_id, desp=""):
     """
@@ -186,11 +209,15 @@ def push_tg(token, chat_id, desp=""):
         else:
             print(f"[{now}] 推送失败：{json_data['error_code']}({json_data['description']})")
 # 企业微信推送
-def wxpush(msg, usr, corpid, corpsecret):
+def wxpush(msg, usr, corpid, corpsecret, agentid=1000002):
     base_url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?'
     req_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token='
     corpid = corpid
     corpsecret = corpsecret
+    agentid = agentid
+
+    if agentid == 0:
+        agentid = 1000002
 
     #获取access_token，每次的access_token都不一样，所以需要运行一次请求一次
     def get_access_token(base_url, corpid, corpsecret):
@@ -215,7 +242,7 @@ def wxpush(msg, usr, corpid, corpsecret):
             "toparty": "@all",
             "totag": "@all",
             "msgtype": "text",
-            "agentid": 1000002,
+            "agentid": agentid,
             "text": {
                 "content": msg
             },
@@ -252,11 +279,18 @@ if __name__ ==  "__main__":
     elif Pm == 'qwx':
         token = input()
         sl = token.split('-')
-        if len(sl) != 3:
+        if len(sl) < 3:
             print('企业微信推送参数有误！')
+    elif Pm == 'pp':
+        token = input()
+        if token == '':
+            print('pushplus token错误')
     elif Pm == 'off':
         input()
         print('不推送')
+    else:
+        print('推送选项有误！')
+        exit(0)
 
     # 用户名（格式为 13800138000）
     user = input()
@@ -274,6 +308,7 @@ if __name__ ==  "__main__":
         for line in range(0,len(user_list)):
             if len(setp_array) == 2:
                 step = str(random.randint(int(setp_array[0]),int(setp_array[1])))
+                print (f"已设置为随机步数（{setp_array[0]}-{setp_array[1]}）")
             elif str(step) == '0':
                 step = ''
             push += main(user_list[line], passwd_list[line], step) + '\n'
@@ -284,7 +319,12 @@ if __name__ ==  "__main__":
         elif Pm == 'tg':
             push_tg(sl[0], sl[1], push)
         elif Pm == 'qwx':
-            wxpush(push, sl[0], sl[1], sl[2])
+            if len(sl) == 4:
+                wxpush(push, sl[0], sl[1], sl[2], int(sl[3]))
+            else:
+                wxpush(push, sl[0], sl[1], sl[2])
+        elif Pm == 'pp':
+            push_pushplus(token, push)
         elif Pm == 'off':
             pass
     else:

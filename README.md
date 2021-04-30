@@ -11,7 +11,7 @@
 
 | Secrets |  格式  |
 | -------- | ----- |
-| PMODE |   推送模式,server酱推送:`wx` 新server酱推送:`nwx` tg推送:`tg` 企业微信推送:`qwx` 关闭推送:`off`|
+| PMODE |   推送模式,server酱推送:`wx` 新server酱推送:`nwx` tg推送:`tg` 企业微信推送:`qwx` PushPlus推送:`pp` 关闭推送:`off`|
 | PKEY |   推送key,详见PKEY参数解释|
 | USER |   账号,仅支持手机号|
 | PWD |   密码|
@@ -21,7 +21,8 @@
 | -------- | ----- |
 | TG推送 |   `token@userid`|
 | Server酱推送 |   `填写server酱的推送key`|
-| 企业微信推送 |   `推送用户（可@all）-corpid-corpsecret`|
+| 企业微信推送 |   `推送用户（可@all）-corpid-corpsecret-(agentid 空则为默认1000002)`|
+| PushPlus推送 |   `token`|
 | 关闭推送 |   `留空即可`|
 
 ### 三、多账户(用不上请忽略)
@@ -61,6 +62,8 @@
 7. 请各位在使用时Fork[主分支](https://github.com/Squaregentleman/mimotion/)，防止出现不必要的bug.
 
 8. TG推送教程 [点我](./TG_PUSH.md)
+
+9. 请注意，账号不是 [小米账号]，而是 [小米运动] 的账号。
 
 ## 历史Star数
 
